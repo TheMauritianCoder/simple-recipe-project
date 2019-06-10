@@ -4,17 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Category {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class Category extends BaseEntity {
 
 	private String description;
 
@@ -28,19 +21,10 @@ public class Category {
 		this.description = description;
 	}
 	
-	public Category(Long id, String description, Set<Recipe> recipes) {
+	public Category(String description, Set<Recipe> recipes) {
 		super();
-		this.id = id;
 		this.description = description;
 		this.recipes = recipes;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Set<Recipe> getRecipes() {
