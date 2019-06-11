@@ -1,10 +1,12 @@
 package ravi.springdemo.recipe.services;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import javassist.NotFoundException;
 import ravi.springdemo.recipe.model.Recipe;
 import ravi.springdemo.recipe.repositories.RecipeRepository;
 
@@ -24,4 +26,13 @@ public class RecipeServiceImpl implements RecipeService{
 		return recipes;
 	}
 
+	@Override
+	public Recipe getRecipe(Long id) throws NotFoundException {			
+		Optional<Recipe> optionalRecipe = recipeRepository.findById(id); 
+		if(!optionalRecipe.isPresent()) {
+			throw new NotFoundException("Recipe with ID "+id+" not found");
+		}
+		return optionalRecipe.get();		
+	}
+	
 }

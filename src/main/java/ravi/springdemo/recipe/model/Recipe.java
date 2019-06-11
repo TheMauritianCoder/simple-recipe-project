@@ -25,8 +25,6 @@ public class Recipe extends BaseEntity{
 	@Lob
 	private String directions;
 
-	// private Difficulty difficulty;
-
 	@Lob
 	private Byte[] image;
 

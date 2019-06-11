@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Recipe Home</title>
+    
+    <th:block th:include="/common/common-imports::styles"></th:block>
+        
+</head>
+<body>
+
+	<div class="container">
+		<div class="card mt-5" th:if="${recipe != null}">
+			 <h5 class="card-header" th:text="${recipe.description}"></h5>
+			 <div class="card-body">
+						<h5>Categories</h5>
+						<ul>
+					<th:block th:each="category : ${recipe.categories}">
+						<li th:text="${category.description}"></li>
+					</th:block>
+				</ul>	
+				
+				<div class="row">
+					<div class="col"><b>Prep. Time: </b> <span th:text="${recipe.prepTime}"></span></div>
+					<div class="col"><b>Difficulty: </b> <span th:text="${recipe.difficulty}"></span></div>
+					<div class="col"><b>Cook Time: </b> <span th:text="${recipe.cookTime}"></span></div>
+				</div>				  		
+			</div>
+		</div>
+		
+		<div class="card" th:if="${recipe == null}">
+			<h5 class="card-header text-danger">Recipe Not Found</h5>
+		</div>
+		
+	</div>
+	<th:block th:include="/common/common-imports::scripts"></th:block>
+</body>
+</html>

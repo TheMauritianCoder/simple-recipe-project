@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Recipe Home</title>
+    
+    <th:block th:include="/common/common-imports::styles"></th:block>
+        
 </head>
 <body>
-<h1>My Recipes!</h1>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Description</th>
-    </tr>
-    <tr th:each="recipe : ${recipes}">
-        <td th:text="${recipe.id}">123</td>
-        <td th:text="${recipe.description}">Tasty Goodnees</td>
-    </tr>
-</table>
+<div class="container">
+	<h1>My Recipes!</h1>
+	<table class="table">
+	    <tr>
+	        <th>ID</th>
+	        <th colspan="2">Description</th>	   
+	    </tr>
+	    <tr th:each="recipe : ${recipes}">
+	        <td th:text="${recipe.id}">123</td>
+	        <td th:text="${recipe.description}">Tasty Goodnees</td>
+	        <th> <a th:href="'/recipe/'+${recipe.id}">View</a></th>
+	    </tr>
+	</table>
+</div>
+	
+	<th:block th:include="/common/common-imports::scripts"></th:block>
 </body>
 </html>
